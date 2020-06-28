@@ -1,5 +1,3 @@
-" command! -nargs=* ShrinkFZF call s:shrink_fzf(<q-args>)
-" OLD_NAME: ZettelSearchInsert()
 func! neuron#insert_zettel_select()
 	try
 		if !exists('g:cache_zettels') || empty('g:cache_zettels')
@@ -17,7 +15,6 @@ func! neuron#insert_zettel_select()
 	endtry
 endf
 
-" OLD_NAME: ZettelSearch() "opens the zettel after search.
 func! neuron#edit_zettel_select()
 	try
 		if !exists('g:cache_zettels') || empty('g:cache_zettels')
@@ -35,19 +32,16 @@ func! neuron#edit_zettel_select()
 	endtry
 endf
 
-" OLD_NAME: ZettelOpenLast()
 func! neuron#edit_zettel_last()
 	exec 'e '.s:get_zettel_last()
 endf
 
-" OLD_NAME: ZettelLastInsert()
 func! neuron#insert_zettel_last()
 	call util#insert(
 		\ util#get_formatted_zettelid(fnamemodify(s:get_zettel_last(), ':t:r')))
 	" call util#insert('<'.fnamemodify(s:get_zettel_last(), ':t:r').'>')
 endf
 
-" OLD_NAME: ZettelNew() " relying on https://github.com/srid/neuron
 func! neuron#edit_zettel_new() " relying on https://github.com/srid/neuron
 	exec 'e '.system('neuron new "PLACEHOLDER"')
 		\ .' | call search("PLACEHOLDER") | norm"_D'
@@ -55,7 +49,6 @@ func! neuron#edit_zettel_new() " relying on https://github.com/srid/neuron
 	call neuron#refresh_cache()
 endf
 
-" OLD_NAME: ZettelOpenUnderCursor()
 func! neuron#edit_zettel_under_cursor()
 	let l:zettel_id = expand('<cword>')
 	if util#is_zettelid_valid(l:zettel_id)
@@ -65,7 +58,6 @@ func! neuron#edit_zettel_under_cursor()
 	endif
 endf
 
-" OLD_NAME: GetTitleOfZettel(ZettelID)
 func! neuron#get_zettel_title(zettel_id)
 	if !exists('g:cache_zettels') || empty('g:cache_zettels')
 		throw "g:cache_zettels not found!"
@@ -81,7 +73,6 @@ func! neuron#refresh_cache()
 	let g:cache_zettels = json_decode(jq_output)
 endf
 
-" OLD_NAME: ZettelOpen(zettel_id)
 func! neuron#edit_zettel(zettel_id)
 	exec 'edit '.s:expand_zettel_id(a:zettel_id)
 endf
@@ -104,7 +95,6 @@ func! s:expand_zettel_id(zettel_id)
 	return g:zkdir . a:zettel_id . g:zextension
 endf
 
-" OLD_NAME: ZettelLast()
 func! s:get_zettel_last()
 	return util#get_file_modified_last(g:zkdir, g:zextension)
 endf

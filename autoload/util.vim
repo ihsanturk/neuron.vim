@@ -91,7 +91,6 @@ func! util#edit_shrink_fzf(line)
 	call neuron#edit_zettel(util#filter_zettels_in_line(a:line, 0))
 endf
 
-" OLD_NAME: LastModifiedFile(dir, extension)
 func! util#get_file_modified_last(dir, extension)
 	return system('ls -t '.a:dir.'*'.a:extension.' | head -1')
 endf
