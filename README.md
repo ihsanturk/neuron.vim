@@ -33,6 +33,7 @@ nm gzu <Plug>EditZettelLast
 nm gzl <Plug>InsertZettelLast
 nm gzz <Plug>EditZettelSelect
 nm gzi <Plug>InsertZettelSelect
+nm gzr <Plug>NeuronRefreshCache
 nm gzo <Plug>EditZettelUnderCursor
 ```
 You can disable the mappings with letting the `g:neuron_no_mappings` variable to

@@ -33,6 +33,9 @@ func! util#is_zettelid_valid(zettelid)
 	if empty(a:zettelid)
 		return 0
 	end
+	if !exists('g:cache_zettels') || empty('g:cache_zettels')
+		call neuron#refresh_cache()
+	endif
 	if index(keys(g:cache_zettels), util#deform_zettelid(a:zettelid)) >= 0
 		return 1
 	else
