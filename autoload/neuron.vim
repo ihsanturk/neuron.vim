@@ -62,14 +62,14 @@ func! neuron#get_zettel_title(zettel_id)
 	if !exists('g:cache_zettels') || empty('g:cache_zettels')
 		throw "g:cache_zettels not found!"
 	endif
-	return g:cache_zettels[a:zettel_id]['title']
+	return g:cache_zettels[a:zettel_id]['zettelTitle']
 endf
 
 " TODO: Remove jq dependency find vimscript native solution.
 func! neuron#refresh_cache()
 	let l:neuron_output = s:run_neuron("query --uri 'z:zettels'")
 	let jq_output =
-		\ s:run_jq("'reduce .result[] as $i ({}; .[$i.id]=$i)'", l:neuron_output)
+		\ s:run_jq("'reduce .result[] as $i ({}; .[$i.zettelID]=$i)'", l:neuron_output)
 	let g:cache_zettels = json_decode(jq_output)
 endf
 

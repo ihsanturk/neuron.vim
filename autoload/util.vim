@@ -24,7 +24,7 @@ endf
 func! util#get_list_pair_zettelid_zetteltitle()
 	let l:final = []
 	for i in keys(g:cache_zettels)
-		call add(l:final, util#format_zettelid(i).':'.g:cache_zettels[i]['title'])
+		call add(l:final, util#format_zettelid(i).':'.g:cache_zettels[i]['zettelTitle'])
 	endfor
 	return l:final
 endf
@@ -103,7 +103,7 @@ func! util#remove_orphans(title)
 	let l:targetdir = '/tmp/orphan-zettels'
 	call mkdir(l:targetdir, 'p')
 	for i in keys(g:cache_zettels)
-		if g:cache_zettels[i]['title'] == a:title
+		if g:cache_zettels[i]['zettelTitle'] == a:title
 			call system("mv ".g:cache_zettels[i]['path']." ".l:targetdir)
 			let l:count += 1
 		end
