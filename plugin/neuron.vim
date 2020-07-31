@@ -23,6 +23,8 @@ nm <silent> <Plug>NeuronRibStop :<C-U>call rpc#stop_server()<cr>
 nm <silent> <Plug>NeuronRibStart :<C-U>call rpc#start_server()<cr>
 nm <silent> <Plug>EditZettelNew :<C-U>call neuron#edit_zettel_new()<cr>
 nm <silent> <Plug>EditZettelSearchContent :<C-U>NeuronSearchContent<cr>
+nm <silent> <Plug>EditZettelNewFromCword      :<C-U>call neuron#edit_zettel_new_from_cword()<cr>
+nm <silent> <Plug>EditZettelNewFromVisual      :<C-U>call neuron#edit_zettel_new_from_visual()<cr>
 nm <silent> <Plug>EditZettelLast :<C-U>call neuron#edit_zettel_last()<cr>
 nm <silent> <Plug>NeuronRefreshCache :<C-U>call neuron#refresh_cache()<cr>
 nm <silent> <Plug>EditZettelSelect :<C-U>call neuron#edit_zettel_select()<cr>
@@ -34,6 +36,8 @@ nm <silent> <Plug>EditZettelUnderCursor
 
 if !exists("g:neuron_no_mappings") || ! g:neuron_no_mappings
 	nm gzn <Plug>EditZettelNew
+	nm gzN <Plug>EditZettelNewFromCword
+	vm gzN <esc><Plug>EditZettelNewFromVisual
 	nm gzb <Plug>NeuronRibStart
 	nm gzu <Plug>EditZettelLast
 	nm gzl <Plug>InsertZettelLast
