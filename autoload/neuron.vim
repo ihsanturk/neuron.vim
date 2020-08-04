@@ -64,6 +64,51 @@ func! neuron#edit_zettel_new() " relying on https://github.com/srid/neuron
 	call neuron#refresh_cache()
 endf
 
+func! neuron#edit_zettel_new_from_cword() " relying on https://github.com/srid/neuron
+	" get the new title
+	let title = trim(expand("<cWORD>"), "<>")
+	exec 'e '.system('neuron -d '.shellescape(g:zkdir).' new "'.shellescape(title).'"')
+	let line = getline('.')
+	" insert the new title, two newlines and start editing
+	call setline('.', strpart(line, 0, col('.') - 1) . " " . title . strpart(line, col('.') - 1))
+	let line = line("$")
+	call append(line, "")
+	call append(line, "")
+	normal G
+	startinsert!
+	call neuron#refresh_cache()
+endf
+
+func! Get_visual_selection()
+  try
+    let a_save = @a
+    silent! normal! gv"ay
+    return @a
+  finally
+    let @a = a_save
+  endtry
+endfunction
+
+func! neuron#edit_zettel_new_from_visual() " relying on https://github.com/srid/neuron
+	" title and content from visual selection (first line = title)
+
+	let vs = split(Get_visual_selection(), "\n")
+	let title = vs[0]
+	let content = vs[1:]
+
+	exec 'e '.system('neuron -d '.shellescape(g:zkdir).' new "'.shellescape(title).'"')
+	"let line = getline('.')
+	"call setline('.', strpart(line, 0, col('.') - 1) . " " . title . strpart(line, col('.') - 1))
+	let line = line("$")
+	call append(line, "")
+	call append(line, "")
+	call append(line, content)
+	normal G
+	startinsert!
+	call neuron#refresh_cache()
+endf
+
+
 func! neuron#edit_zettel_under_cursor()
 	let l:zettel_id = expand('<cword>')
 	if util#is_zettelid_valid(l:zettel_id)
