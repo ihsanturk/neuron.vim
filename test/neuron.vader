@@ -12,11 +12,17 @@ Execute (util#is_zettelid_valid):
 Execute (s:format_zettelid):
   AssertEqual util#format_zettelid('<myzettelid>'), '<myzettelid>'
   AssertEqual util#format_zettelid('myzettelid'), '<myzettelid>'
+  let g:zettel_link_style = ['[[', ']]']
+  AssertEqual util#format_zettelid('myzettelid'), '[[myzettelid]]'
+  let g:zettel_link_style = ['<', '>']
 
 Execute (s:deform_zettelid):
   AssertEqual util#deform_zettelid('myzettelid'), 'myzettelid'
   AssertEqual util#deform_zettelid('<myzettelid>'), 'myzettelid'
   AssertEqual util#deform_zettelid('<myzettelid?cf>'), 'myzettelid'
+  let g:zettel_link_style = ['[[', ']]']
+  AssertEqual util#deform_zettelid('[[myzettelid]]'), 'myzettelid'
+  let g:zettel_link_style = ['<', '>']
 
 
 Execute (util#get_formatted_zettelid):
