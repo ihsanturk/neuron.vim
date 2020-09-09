@@ -29,9 +29,9 @@ func! s:add_virtual_titles()
 	let l:lnum = 0
 	for line in getbufline(bufname('%'), 1, "$")
 		let l:line_matches = matchlist(line, l:re_neuron_link)
-    if (empty(l:line_matches))
-      let l:line_matches = matchlist(line, l:re_neuron_link_alt)
-    endif
+		if (empty(l:line_matches))
+			let l:line_matches = matchlist(line, l:re_neuron_link_alt)
+		endif
 		if(!empty(l:line_matches))
 			let l:zettel_id = l:line_matches[1]
 			if util#is_zettelid_valid(l:zettel_id)

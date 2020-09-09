@@ -63,7 +63,7 @@ func! util#filter_zettels_in_line(line, ...)
 	let l:found = []
 	let l:n = get(a:, 1, -1)
 	for i in keys(g:cache_zettels)
-    " use very non magic matching for different link styles
+		" use very non magic matching for different link styles
 		let l:matched = util#deform_zettelid(matchstr(a:line, '\V'.util#format_zettelid(i)))
 		if !empty(l:matched)
 			call add(l:found, l:matched)
@@ -79,7 +79,7 @@ endf
 func! util#deform_zettelid(zettelid)
 	if a:zettelid =~ "<.*>"
 		return substitute(a:zettelid, '<\([0-9a-zA-Z_-]\+\)\(?cf\)\?>', '\1', 'g')
-  elseif a:zettelid =~ '\[\[.*\]\]'
+	elseif a:zettelid =~ '\[\[.*\]\]'
 		return substitute(a:zettelid, '\[\[\([0-9a-zA-Z_-]\+\)\]\]', '\1', 'g')
 	else
 		return a:zettelid
@@ -89,12 +89,12 @@ endf
 func! util#format_zettelid(zettelid)
 	if a:zettelid =~ "<.*>"
 		return a:zettelid
-  elseif a:zettelid =~ "\[\[.*\]\]"
+	elseif a:zettelid =~ "\[\[.*\]\]"
 		return a:zettelid
 	else
-    let l:open = get(g:zettel_link_style, 0)
-    let l:close = get(g:zettel_link_style, 1)
-    return l:open.a:zettelid.l:close
+		let l:open = get(g:zettel_link_style, 0)
+		let l:close = get(g:zettel_link_style, 1)
+		return l:open.a:zettelid.l:close
 	end
 endf
 
