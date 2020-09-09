@@ -1,3 +1,4 @@
 Execute (setup):
-  Save g:cache_zettels, g:line
+  Save g:cache_zettels, g:line, g:zettel_style_links
+  let g:zettel_style_links =['<', '>']
   let g:cache_zettels = {'0620e9c1': {'day': '2020-06-12', 'zettelID': '0620e9c1', 'path': '/Users/ihsan/zettelkasten/0620e9c1.md', 'tags': [], 'zettelTitle': 'Ways to Be Happy'}, '0ea4e05f': {'day': '2020-05-22', 'zettelID': '0ea4e05f', 'path': '/Users/ihsan/zettelkasten/0ea4e05f.md', 'tags': [], 'zettelTitle': 'See the Net Worth'}, '11522283': {'day': '2020-06-05', 'zettelID': '11522283', 'path': '/Users/ihsan/zettelkasten/11522283.md', 'tags': [], 'zettelTitle': 'Project Thought'}}

@@ -92,8 +92,8 @@ func! util#format_zettelid(zettelid)
   elseif a:zettelid =~ "\[\[.*\]\]"
 		return a:zettelid
 	else
-    let l:open = get(g:style_links, 0)
-    let l:close = get(g:style_links, 1)
+    let l:open = get(g:zettel_style_links, 0)
+    let l:close = get(g:zettel_style_links, 1)
     return l:open.a:zettelid.l:close
 	end
 endf
