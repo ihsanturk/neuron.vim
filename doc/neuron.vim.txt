@@ -12,6 +12,10 @@ g:style_virtual_title   Style the virtual titles. The value can be anything
                         from the output of |hi| command. Default >
                         let g:style_virtual_title = 'Comment'
 
+g:zettel_link_style     Style to use for the opening and closing of links.
+                        Supports '<...>' and '[[...]]'' styles. Default:
+                        let g:zettel_link_style = ['<', '>']
+
 g:zextension            Zettel file extension. Default: >
                         let g:zexte = '.md'
 
