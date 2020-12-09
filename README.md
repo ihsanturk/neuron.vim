@@ -1,11 +1,7 @@
 # neuron.vim
+### `DEPRECATED`, see: [fiatjaf/neuron.vim](https://github.com/fiatjaf/neuron.vim/)
 Manage your [Zettelkasten](https://neuron.zettel.page/2011401.html) with the
 help of [neuron](https://github.com/srid/neuron) in {n}vim.
-
-**Caution**: This repo is not actively maintained and may not work with the
-current version of [neuron](https://neuron.zettel.page). It is highly suggested
-to use [fiatjaf/neuron.vim fork](https://github.com/fiatjaf/neuron.vim/)
-instead at the moment. Thanks.
 
 ![usage-photo](https://lh3.googleusercontent.com/pw/ACtC-3f5ub7ODWrnCYh-ZHDaBk84ZzBjLZ50W32Se4NRqy0kaBOJLGysG8HYYqhpo3hgoc8rABOOrxVqOlA3ut6yB-KGMPuZOI5XQ7D-1nllqCH5oRx28wbXmsOmO2rIdaJFUpTQNTiP-g-vt-i3IAfbwXjC=w1472-h1005-no?authuser=0)
 
